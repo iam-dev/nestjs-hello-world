@@ -1,4 +1,19 @@
-node_modules/
-dist/
-environments/*.ts
+# dependencies
+/node_modules
+
+# IDE
+/.idea
+/.awcache
+/.vscode
+
+# misc
+npm-debug.log
 package-lock.json
+# example
+/quick-start
+
+# dist
+dist/
+
+# environments
+environments/*.ts
