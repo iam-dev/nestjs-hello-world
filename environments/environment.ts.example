@@ -1,0 +1,8 @@
+export const environment = {
+    production: false,
+    port: 3000
+    username: 'test',
+    password: 'password123',
+    secret: 'secret123',
+    mongodb: 'mongodb://localhost/myapp'
+};
