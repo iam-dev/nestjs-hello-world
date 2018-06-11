@@ -1,0 +1,4 @@
+node_modules/
+dist/
+environments/*.ts
+package-lock.json
