@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import { User } from './interfaces/user.interface';
 
-@Controller('users')
+@Controller('api/v1/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -15,5 +15,11 @@ export class UsersController {
   @Get()
   async findAll(): Promise<User[]> {
     return this.usersService.findAll();
+  }
+
+  @Get(':id')
+  async findById(@Param('id') id) : Promise<User[]> {
+    console.log(id);
+    return this.usersService.findById(id);
   }
 }
