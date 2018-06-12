@@ -6,5 +6,6 @@ export const environment = {
     secret: 'secret123',
     mongodb: 'mongodb://localhost/myapp',
     admin: 'admin',
+    adminEmail: 'admin@email.com',
     adminPassword: 'admin123'
 };

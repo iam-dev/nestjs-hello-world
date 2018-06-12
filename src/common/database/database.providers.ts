@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-import { environment }  from '../../environments/environment';
+import { environment }  from '../../../environments/environment';
 
 export const databaseProviders = [
   {

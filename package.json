@@ -23,9 +23,9 @@
     "@nestjs/mongoose": "^5.0.0",
     "@nestjs/passport": "^1.0.11",
     "@nestjs/swagger": "^2.0.2",
-    "@nestjs/testing": "^5.0.0",
     "@nestjs/websockets": "^5.0.0",
     "class-validator": "^0.8.5",
+    "fastify": "^1.6.0",
     "fastify-formbody": "^2.0.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.1.4",
@@ -37,6 +37,7 @@
     "typescript": "^2.6.2"
   },
   "devDependencies": {
+    "@nestjs/testing": "^5.0.1",
     "@types/express": "^4.0.39",
     "@types/jest": "^21.1.8",
     "@types/node": "^9.3.0",
@@ -50,9 +51,9 @@
     "ts-node": "^4.1.0",
     "tsconfig-paths": "^3.1.1",
     "tslint": "5.3.2",
-    "webpack": "^4.2.0",
-    "webpack-cli": "^2.0.13",
-    "webpack-node-externals": "^1.6.0"
+    "webpack": "^4.12.0",
+    "webpack-cli": "^2.1.5",
+    "webpack-node-externals": "^1.7.2"
   },
   "jest": {
     "moduleFileExtensions": [

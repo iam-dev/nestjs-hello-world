@@ -1,7 +1,11 @@
 import { IsString, IsEmail, IsDate, IsNotEmpty } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
-export class CreateUserDto {
+export class CreateAuthDto {
+  @ApiModelProperty()
+  @IsString()
+  readonly token: string;
+
   @ApiModelProperty()
   @IsString()
   @IsNotEmpty()
@@ -14,27 +18,11 @@ export class CreateUserDto {
 
   @ApiModelProperty()
   @IsString()
-  readonly description: string;
-  
-  @ApiModelProperty()
-  @IsString()
   readonly password: string;
 
   @ApiModelProperty()
   @IsString()
-  readonly hash: string;
-
-  @ApiModelProperty()
-  @IsString()
-  readonly salt: string;
-
-  @ApiModelProperty()
-  @IsDate()
-  readonly effectiveDateFrom: Date;
-
-  @ApiModelProperty()
-  @IsDate()
-  readonly effectiveDateTo: Date;
+  readonly expiresIn: string;
 
   @ApiModelProperty()
   @IsString()
