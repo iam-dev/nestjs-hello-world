@@ -1,8 +1,8 @@
 import { IsString, IsEmail, IsDate, IsNotEmpty } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
-import * as crypto from 'crypto';
 
-export class CreateUserDto {
+
+export class UpdateUserDto {
   @ApiModelProperty()
   @IsString()
   @IsNotEmpty()
@@ -52,27 +52,4 @@ export class CreateUserDto {
   @ApiModelProperty()
   @IsDate() 
   readonly updatedAt: Date;
-
-  public validatePassword(password) {
-    console.log('In CreateUserDto.validatePassword()');
-    console.log('password= ' +password);
-    let salt = this.getSalt();
-    console.log('salt= ' +salt);
-    let hash = this.getHash(salt, password);
-    console.log('hash= ' +hash);
-    if (hash === this.hash){
-      return true;
-    } else {
-      return false;
-    }
-
-  }
-
-  protected getSalt() {
-    return crypto.randomBytes(16).toString('hex');;
-  }
-
-  protected getHash(password, salt) {
-    return crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
-  } 
 }

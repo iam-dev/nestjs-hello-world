@@ -1,25 +1,56 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
 import { User } from './interfaces/user.interface';
+import {
+  ApiUseTags,
+  ApiBearerAuth,
+  ApiResponse,
+  ApiOperation,
+} from '@nestjs/swagger';
 
-@Controller('api/v1/users')
+@ApiBearerAuth()
+@ApiUseTags('users')
+@Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
+  @ApiOperation({ title: 'Create user' })
+  @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  @ApiResponse({ status: 500, description: 'Internal server error.' })
   async create(@Body() createUserDto: CreateUserDto) {
-    this.usersService.create(createUserDto);
+    return await this.usersService.create(createUserDto);
   }
 
   @Get()
+  @ApiOperation({ title: 'Get all users' })
+  @ApiResponse({ status: 200 })
   async findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+    return await this.usersService.findAll();
   }
 
   @Get(':id')
+  @ApiOperation({ title: 'Get a specific user by id' })
+  @ApiResponse({ status: 200 })
   async findById(@Param('id') id) : Promise<User[]> {
-    console.log(id);
-    return this.usersService.findById(id);
+    return await this.usersService.findById(id);
+  }
+
+  @Put(':id')
+  @ApiOperation({ title: 'Update a specific user by id' })
+  @ApiResponse({ status: 500, description: 'Internal server error.' })
+  async update(@Param('id') id, @Body() updateUserDto: UpdateUserDto) {
+    return await this.usersService.findByIdAndUpdate(id, updateUserDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ title: 'Delete a specific user by id' })
+  @ApiResponse({ status: 200, description: 'User deleted' })
+  @ApiResponse({ status: 500, description: 'Internal server error.' })
+  async remove(@Param('id') id) {
+    return await this.usersService.remove(id);
   }
 }

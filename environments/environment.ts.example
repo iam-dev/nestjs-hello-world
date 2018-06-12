@@ -4,5 +4,7 @@ export const environment = {
     username: 'test',
     password: 'password123',
     secret: 'secret123',
-    mongodb: 'mongodb://localhost/myapp'
+    mongodb: 'mongodb://localhost/myapp',
+    admin: 'admin',
+    adminPassword: 'admin123'
 };
